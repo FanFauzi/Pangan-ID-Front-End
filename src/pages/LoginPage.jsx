@@ -77,6 +77,7 @@ export default function LoginPage() {
           >
             {isSubmitting ? 'Masuk...' : 'Masuk'}
           </button>
+          
           <p className="text-sm">
             Belum punya akun? <Link to="/register" className="text-blue-600">Register</Link>
           </p>

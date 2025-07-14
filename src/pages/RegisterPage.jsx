@@ -25,45 +25,58 @@ export default function RegisterPage() {
       <div
         className='w-1/2 h-screen'
         style={{
-          backgroundImage: `url(${registerImg})`,
+          backgroundImage: `url(${ registerImg })`,
           backgroundSize: 'cover'
         }}
       ></div>
       <form onSubmit={handleSubmit(onSubmit)} className="w-1/2 h-full flex flex-col items-center justify-center">
         <h1 className="text-xl font-bold pb-10">Registrasi</h1>
-        <div className="flex flex-col gap-5">
+        <div className="flex flex-col gap-5 w-2/3">
           <input
             type="text"
             className='border-b outline-none p-2'
-            {...register('name')}
+            {...register('username')}
             placeholder="Nama Lengkap" />
-
-          {errors.name && <p>{errors.name.message}</p>}
+          {errors.name && <p className="text-red-600 text-sm">{errors.name.message}</p>}
 
           <input
             type="email"
             className='border-b outline-none p-2'
             {...register('email')}
             placeholder="Email" />
-
-          {errors.email && <p>{errors.email.message}</p>}
+          {errors.email && <p className="text-red-600 text-sm">{errors.email.message}</p>}
 
           <input
             type="password"
             className='border-b outline-none p-2'
             {...register('password')}
             placeholder="Password" />
+          {errors.password && <p className="text-red-600 text-sm">{errors.password.message}</p>}
 
-          {errors.password && <p>{errors.password.message}</p>}
+          <input
+            type="text"
+            className='border-b outline-none p-2'
+            {...register('addres')}
+            placeholder="Alamat" />
+          {errors.address && <p className="text-red-600 text-sm">{errors.address.message}</p>}
+
+          <select
+            className="border-b outline-none p-2 bg-white"
+            {...register('role')}
+          >
+            <option value="">Pilih Peran</option>
+            <option value="produsen">Produsen</option>
+            <option value="konsumen">Konsumen</option>
+          </select>
+          {errors.role && <p className="text-red-600 text-sm">{errors.role.message}</p>}
         </div>
-        <div className='flex flex-col gap-5 pt-10'>
+        <div className='flex flex-col gap-5 pt-10 w-2/3'>
           <button
-            className='bg-input text-white py-2 rounded-md hover:not-focus:bg-green-700'
-            disabled={isSubmitting}>{isSubmitting ?
-              'Mendaftar...'
-              :
-              'Daftar'}</button>
-          <p className="text-sm">
+            className='bg-input text-white py-2 rounded-md hover:bg-green-700 disabled:opacity-50'
+            disabled={isSubmitting}>
+            {isSubmitting ? 'Mendaftar...' : 'Daftar'}
+          </button>
+          <p className="text-sm text-center">
             Sudah punya akun? <Link to="/login" className="text-blue-600">Login</Link>
           </p>
         </div>

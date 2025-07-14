@@ -5,7 +5,7 @@ import Search from './Search';
 
 export default function Header() {
   return (
-    <div className="w-full h-20 flex items-center justify-between px-10 bg-input">
+    <div className="w-full h-20 flex items-center justify-between px-10 py-5 bg-input">
       <p className="text-2xl font-bold text-amber-50">
         <a href="dashboard" className="text-2xl font-bold text-amber-50 hover:text-amber-200">
           PanganID
