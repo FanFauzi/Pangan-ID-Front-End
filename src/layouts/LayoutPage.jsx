@@ -16,7 +16,7 @@ export default function LayoutPage() {
       <div className="flex flex-1">
         {/* Sidebar (jika ditampilkan) */}
         {!hideSidebar && (
-          <div className="w-1/4 bg-white px-10 pt-5 font-medium text-lg sm:font-normal sm:text-sm overflow-y-auto">
+          <div className="w-1/4 h-full bg-white px-10 pt-5 font-medium text-lg sm:font-normal sm:text-sm overflow-y-auto">
             <h3><Link to="/produsen/pesanan" className="hover:underline">Pesanan</Link></h3>
             <h3 className="py-2"><Link to="/produsen/kelola-produk" className="hover:underline">Produk</Link></h3>
             <h3><Link to="/produsen/tambah-produk" className="hover:underline">Tambah Produk</Link></h3>

@@ -1,10 +1,13 @@
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Link } from 'react-router-dom';
 import { productSchema } from '../utils/validators';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function AddProductPage() {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const {
     register,
@@ -33,7 +36,8 @@ export default function AddProductPage() {
 
       if (!response.ok) throw new Error(result.message || 'Gagal menambahkan produk');
 
-      // navigate('/produsen/kelola-produk');
+      toast.success('Produk berhasil ditambahkan!');
+      navigate('/produsen/kelola-produk');
     } catch (err) {
       console.error(err);
     }

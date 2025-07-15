@@ -28,7 +28,7 @@ const KelolaProdukPage = () => {
   }, []);
 
   return (
-    <div className='pt-3 w-full px-10'>
+    <div className='pt-3 w-full h-full px-10'>
       <div className='sm:text-sm md:text-base'>
         <h1 className="text-green-800 font-semibold text-2xl mb-1">Produk</h1>
         <div className='h-[5px] w-[90%] sm:h-[3px] bg-input mb-5'></div>
