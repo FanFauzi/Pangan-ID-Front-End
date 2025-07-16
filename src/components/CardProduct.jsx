@@ -1,7 +1,7 @@
 
 export default function CardProduct({ imgProduct, titleProduct, priceProduct, descProduct, onClick }) {
   return (
-    <div className="w-full py-6 flex justify-center" onClick={onClick}>
+    <div className="w-full py-6 flex justify-center cursor-pointer" onClick={onClick}>
       <div className="w-full max-w-4xl flex flex-col md:flex-row bg-white rounded-2xl shadow-md overflow-hidden">
         <img
           src={imgProduct}

@@ -13,6 +13,8 @@ import PesananProdusenPage from '../pages/PesananProdusenPage';
 
 // import UpdateStatusPesananPage from '../pages/UpdateStatusPesananPage';
 import DetailPesananPage from '../pages/DetailPesananPage';
+import TransaksiPage from '../pages/TransaksiPage';
+import HargaPanganPage from '../pages/HargaPanganPage';
 
 export default function AppRoutes() {
   return (
@@ -33,6 +35,9 @@ export default function AppRoutes() {
           <Route path="kelola-produk" element={<KelolaProdukPage />} />
           <Route path="tambah-produk" element={<AddProductPage />} />
           <Route path="edit-produk/:id" element={<EditProductPage />} />
+          <Route path="harga-pangan" element={<HargaPanganPage />} />
+
+          <Route path="transaksi" element={<TransaksiPage />} />
 
           <Route path="pesanan" element={<PesananProdusenPage />} />
           {/* <Route path="pesanan/:id/update-status" element={<UpdateStatusPesananPage />} /> */}

@@ -1,8 +1,8 @@
 // import kelolaProduk from '../assets/img/kelolaProduk.png';
 
-export default function CardFitur({ imgFitur, titleFitur }) {
+export default function CardFitur({ imgFitur, titleFitur, onClick }) {
   return (
-    <div className="w-full flex justify-center px-4 cursor-pointer">
+    <div className="w-full flex justify-center px-4 cursor-pointer" onClick={onClick}>
       {/* <a href="kelola-produk"> */}
         <div className="w-full max-w-4xl flex flex-col md:flex-row items-center rounded-2xl bg-white py-5 px-6 gap-4 shadow-md">
           <div className="image-fitur flex justify-center md:justify-start w-full md:w-1/2">

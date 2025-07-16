@@ -9,6 +9,8 @@ export const registerSchema = yup.object({
   name: yup.string().required('Nama wajib diisi'),
   email: yup.string().email('Email tidak valid').required('Email wajib diisi'),
   password: yup.string().min(6, 'Minimal 6 karakter').required('Password wajib diisi'),
+  address: yup.string().required('Alamat wajib diisi'),
+  role: yup.string().required('Role wajib diisi'),
 });
 
 export const productSchema = yup.object().shape({

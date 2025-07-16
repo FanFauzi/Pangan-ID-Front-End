@@ -1,6 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useNavigate, Link } from 'react-router-dom';
+import { useAuth } from '../hooks/useAuth';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { loginSchema } from '../utils/validators';
@@ -8,6 +9,7 @@ import registerImg from '../assets/img/register.jpg';
 
 export default function LoginPage() {
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   const {
     register,
@@ -19,22 +21,18 @@ export default function LoginPage() {
 
   const onSubmit = async (data) => {
     try {
-      const response = await fetch('http://localhost:5000/api/auth/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      });
+      const payload = {
+        email: data.email,
+        password: data.password,
+      };
 
-      const result = await response.json();
-
-      if (!response.ok) {
-        throw new Error(result.message);
+      const response = await login(payload);
+      if (response) {
+        toast.success('Login berhasil!');
+        navigate('/produsen/dashboard');
+      } else {
+        toast.error('Gagal login. Coba lagi!');
       }
-console.log(result.user.role);
-      localStorage.setItem('token', result.token);
-      localStorage.setItem('role', result.user.role);
-      toast.success('Login berhasil!');
-      navigate('/produsen/dashboard');
     } catch (error) {
       toast.error(error.message || 'Terjadi kesalahan saat login');
     }
@@ -78,7 +76,7 @@ console.log(result.user.role);
           >
             {isSubmitting ? 'Masuk...' : 'Masuk'}
           </button>
-          
+
           <p className="text-sm">
             Belum punya akun? <Link to="/register" className="text-blue-600">Register</Link>
           </p>

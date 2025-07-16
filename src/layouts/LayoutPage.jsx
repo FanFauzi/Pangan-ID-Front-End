@@ -3,7 +3,9 @@ import Header from '../components/header';
 
 export default function LayoutPage() {
   const location = useLocation();
-  const hideSidebar = location.pathname === '/produsen/dashboard';
+  const noSidebarRoutes = ['/produsen/dashboard', '/produsen/transaksi', '/produsen/harga-pangan' ];
+  const hideSidebar = noSidebarRoutes.includes(location.pathname);
+
 
   return (
     <div className="h-screen w-screen flex flex-col bg-neutral-100">

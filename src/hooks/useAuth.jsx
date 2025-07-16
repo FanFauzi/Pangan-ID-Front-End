@@ -15,13 +15,19 @@ export function useAuth() {
     }
   };
 
-  const registerUser = async (data) => {
+  const registerUser = async (userData) => {
     try {
-      const user = await registerNewUser(data);
-      setUser(user);
-      return true;
+      const res = await registerNewUser(userData);
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.message || 'Registrasi gagal');
+      }
+      console.log(data);
+      return data;
     } catch (err) {
-      console.error(err);
+      alert(err.message);
       return false;
     }
   };
