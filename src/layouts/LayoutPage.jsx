@@ -1,9 +1,9 @@
 import { Outlet, Link, useLocation } from 'react-router-dom';
-import Header from '../components/header';
+import Header from '../components/Header';
 
 export default function LayoutPage() {
   const location = useLocation();
-  const noSidebarRoutes = ['/produsen/dashboard', '/produsen/transaksi', '/produsen/harga-pangan' ];
+  const noSidebarRoutes = ['/produsen/dashboard', '/produsen/transaksi', '/produsen/harga-pangan'];
   const hideSidebar = noSidebarRoutes.includes(location.pathname);
 
 
