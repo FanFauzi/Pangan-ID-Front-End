@@ -9,6 +9,10 @@ import EditProductPage from '../pages/EditProductPage';
 import LayoutPage from '../layouts/LayoutPage';
 import ProductDetailPage from '../pages/ProductDetailPage';
 import CheckoutPage from '../pages/CheckOutPage';
+import PesananProdusenPage from '../pages/PesananProdusenPage';
+
+// import UpdateStatusPesananPage from '../pages/UpdateStatusPesananPage';
+import DetailPesananPage from '../pages/DetailPesananPage';
 
 export default function AppRoutes() {
   return (
@@ -29,7 +33,13 @@ export default function AppRoutes() {
           <Route path="kelola-produk" element={<KelolaProdukPage />} />
           <Route path="tambah-produk" element={<AddProductPage />} />
           <Route path="edit-produk/:id" element={<EditProductPage />} />
-          <Route path="pesanan" element={<div>Pesanan Page</div>} />
+
+          <Route path="pesanan" element={<PesananProdusenPage />} />
+          {/* <Route path="pesanan/:id/update-status" element={<UpdateStatusPesananPage />} /> */}
+          <Route path="pesanan/:id" element={<DetailPesananPage />} />
+
+          {/* <Route path='order/:id' element={<PesananProdusenPage />} /> */}
+          {/* <Route path='order/:id/update-status' element={<UpdateStatusPage />} /> */}
         </Route>
       </Routes>
     </Router>

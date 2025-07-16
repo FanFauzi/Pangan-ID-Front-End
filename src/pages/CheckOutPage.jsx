@@ -1,5 +1,6 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 
 export default function Checkout() {
   const { id } = useParams();
@@ -10,7 +11,7 @@ export default function Checkout() {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/api/products/${id}`, {
+        const res = await fetch(`http://localhost:5000/api/produk/${id}`, {
           headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}`
           }
@@ -44,11 +45,13 @@ export default function Checkout() {
       const data = await res.json();
 
       if (!res.ok) throw new Error(data.message);
-      alert('Checkout berhasil!');
-      navigate('/');
+      // alert('Checkout berhasil!');
+      toast.success('Checkout berhasil!');
+      navigate('/produsen/dashboard');
     } catch (err) {
       console.error(err);
-      alert('Checkout gagal!');
+      toast.warn('Checkout gagal!');
+      // alert('Checkout gagal!');
     }
   };
 

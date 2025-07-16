@@ -8,7 +8,7 @@ export default function ProductDetailPage() {
 
   useEffect(() => {
     const fetchProduct = async () => {
-      const res = await fetch(`http://localhost:5000/api/products/${id}`, {
+      const res = await fetch(`http://localhost:5000/api/produk/${id}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`
         }

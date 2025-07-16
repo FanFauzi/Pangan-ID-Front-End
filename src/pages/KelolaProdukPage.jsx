@@ -7,7 +7,7 @@ const KelolaProdukPage = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/products', {
+        const response = await fetch('http://localhost:5000/api/produk', {
           method: 'GET',
           headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -27,6 +27,10 @@ const KelolaProdukPage = () => {
     fetchProducts();
   }, []);
 
+  const handleDelete = (deletedId) => {
+    setProducts(prev => prev.filter(p => p.id !== deletedId));
+  };
+
   return (
     <div className='pt-3 w-full h-full px-10'>
       <div className='sm:text-sm md:text-base'>
@@ -35,13 +39,14 @@ const KelolaProdukPage = () => {
       </div>
       <div className="flex flex-col">
         {products.map(product => (
-          <Product 
-          id={product.id}
-          name={product.name}
-          img={product.image_url}
-          key={product.id}
-          price={product.price}
-          qty={product.stock}
+          <Product
+            id={product.id}
+            name={product.name}
+            img={product.image_url}
+            key={product.id}
+            price={product.price}
+            qty={product.stock}
+            onDelete={handleDelete}
           // total={product.price * product.stock}
           />
         ))}

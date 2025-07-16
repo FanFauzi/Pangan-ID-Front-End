@@ -24,7 +24,7 @@ export default function AddProductPage() {
     formData.append('image', data.image[0]); // ambil file dari array
 
     try {
-      const response = await fetch('http://localhost:5000/api/products/tambah-produk', {
+      const response = await fetch('http://localhost:5000/api/produk/tambah-produk', {
         method: 'POST',
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`

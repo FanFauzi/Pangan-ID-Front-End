@@ -13,7 +13,7 @@ export default function DashboardProdusenPage() {
 
   useEffect(() => {
     const fetchProducts = async () => {
-      const res = await fetch('http://localhost:5000/api/products', {
+      const res = await fetch('http://localhost:5000/api/produk', {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`
         }
@@ -30,23 +30,37 @@ export default function DashboardProdusenPage() {
       <main className="flex-1">
         <Jumbotron />
         <div className="card-fitur w-screen flex px-15 gap-10">
-          <CardFitur imgFitur={kelolaProduk} titleFitur="Kelola Produk" />
-          <CardFitur imgFitur={transaksi} titleFitur="Transaksi" />
-          <CardFitur imgFitur={harga} titleFitur="Harga" />
+          <CardFitur
+            imgFitur={kelolaProduk}
+            titleFitur="Kelola Produk"
+            onClick={() => navigate('/kelola-produk')} />
+
+          <CardFitur
+            imgFitur={transaksi}
+            titleFitur="Transaksi"
+            onClick={() => navigate('/pesanan-masuk')} />
+
+          <CardFitur
+            imgFitur={harga}
+            titleFitur="Harga"
+            onClick={() => navigate('/harga')} />
         </div>
         <div>
           <p className="text-2xl font-bold text-gray-800 px-15 pt-8">Produk Terbaru</p>
           <div className="card-produk grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-15 py-4">
-            {products.map((product) => (
-              <CardProduct
-                key={product.id}
-                imgProduct={`http://localhost:5000${product.image_url}`}
-                titleProduct={product.name}
-                descProduct={product.description}
-                priceProduct={`Rp ${parseInt(product.price).toLocaleString("id-ID")}`}
-                onClick={() => navigate(`/checkout/${product.id}`)}
-              />
-            ))}
+            {products.length === 0 ? (
+              <p className="text-gray-500 italic">Belum ada produk tersedia.</p>
+            ) : (products.map((product) => (
+                <CardProduct
+                  key={product.id}
+                  imgProduct={`http://localhost:5000${product.image_url}`}
+                  titleProduct={product.name}
+                  descProduct={product.description}
+                  priceProduct={`Rp ${parseInt(product.price).toLocaleString("id-ID")}`}
+                  onClick={() => navigate(`/checkout/${product.id}`)}
+                />
+              ))
+            )}
           </div>
         </div>
       </main>

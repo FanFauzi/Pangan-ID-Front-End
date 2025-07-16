@@ -30,8 +30,9 @@ export default function LoginPage() {
       if (!response.ok) {
         throw new Error(result.message);
       }
-
-      localStorage.setItem('token', result.token); // Simpan token JWT
+console.log(result.user.role);
+      localStorage.setItem('token', result.token);
+      localStorage.setItem('role', result.user.role);
       toast.success('Login berhasil!');
       navigate('/produsen/dashboard');
     } catch (error) {
